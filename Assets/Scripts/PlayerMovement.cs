@@ -8,35 +8,14 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
 
-    public float speed = 15f;
+    public float speed = 5f;
     public float rotateSpeed = 100f;
-
-    //transform.RotateAround(Vector3.zero, Vector3.up, gradosPorSegundo* Time.deltaTime)
-
-    //private PlayerInput playerInput;
-    //private bool isTriggered = false;
-
-    private void Awake()
-    {
-        controller = this.GetComponent<CharacterController>();
-        //playerInput = this.GetComponent<PlayerInput>(); 
-    }
 
     void Start()
     {
-        //playerInput.actions["WASD"].started += StartTriggering;
-        //playerInput.actions["WASD"].canceled += StopTriggering;
+        controller = this.GetComponent<CharacterController>();
     }
 
-    /*public void StartTriggering(InputAction.CallbackContext context)
-    {
-        isTriggered = true;
-    }
-    public void StopTriggering(InputAction.CallbackContext context)
-    {
-        isTriggered = false;
-    }*/
-  
     void Update()
     {
         //Movimiento
@@ -54,13 +33,5 @@ public class PlayerMovement : MonoBehaviour
         //Velocidad de rotacion
         transform.Rotate(0f, horizontal * rotateSpeed * Time.deltaTime, 0f);
 
-
-
-        /*if (isTriggered)
-        {
-            Vector2 vector = playerInput.actions["WASD"].ReadValue<Vector2>();
-            Vector3 movement = new Vector3(vector.x * speed, 0, vector.y * speed);
-            controller.SimpleMove(movement);
-        }*/
     }
 }
