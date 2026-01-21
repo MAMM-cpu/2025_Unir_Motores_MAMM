@@ -25,7 +25,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "139cd5c4-0d3b-4073-bd78-fc8e91031b71",
                     "expectedControlType": "",
@@ -80,28 +80,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "263ba41a-0bff-4668-90dc-de6069f95d30",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "0f7104f3-c5fa-4cd6-9707-738200939f9e",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "7cd82b8b-72e8-40c5-a7ac-54ad2737c1e5",
                     "path": "<Gamepad>/rightStick",
@@ -126,7 +104,7 @@
                 {
                     "name": "left",
                     "id": "1c435150-e5c7-421d-99cd-d9fafc1cf456",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -137,7 +115,7 @@
                 {
                     "name": "right",
                     "id": "18f1b79f-408e-4485-b088-c86cc85ffc0d",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -152,18 +130,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "4602c4ce-16ac-442d-91d5-27320693010c",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

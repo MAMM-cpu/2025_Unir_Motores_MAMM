@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - DoorTrigger
+  - TrapTriggerFloor
+  - TrapTriggerOnRoof
+  - TrapTriggerOffRoof
+  - Ground
   layers:
   - Default
   - TransparentFX

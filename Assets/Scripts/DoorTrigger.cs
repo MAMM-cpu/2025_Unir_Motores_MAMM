@@ -1,20 +1,20 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorTrigger : MonoBehaviour
 {
+    [SerializeField] GameObject door;
 
-    // Update is called once per frame
     void Update()
     {
-        bool doorTriggered = false;
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity))
         {
-            if (hit.collider.CompareTag("DoorTrigger"))
+            if (hit.collider.CompareTag("DoorTrigger") /*&& Input.GetKeyDown(KeyCode.E)*/)
             {
+                door.SetActive(false);
                 Debug.Log("Puerta");
-                doorTriggered = true;
-                //detectedCanvas.gameObject.SetActive(true);
+                //detectedCanvas.gameObject.SetActive(true); 
             }
         }
 
