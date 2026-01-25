@@ -3,45 +3,41 @@ using UnityEngine;
 public class TrapTrigger : MonoBehaviour
 {
 
-    [SerializeField] float radio = 1.2f;
-    [SerializeField] GameObject ground;
-    public bool move = false;
+    [SerializeField] public GameObject ground;
 
-    void Update()
+    bool lookTrigger;
+    bool stepTrigger;
+    Death dead;
+
+    private void Awake()
     {
-        // Trigger para activar trampas del suelo y del techo
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radio);
-        for (int i = 0; i < colliders.Length; i++)
+        dead = FindAnyObjectByType<Death>();
+    }
+
+    void Death()
+    {
+        if (dead.isDead) return;
+        if (lookTrigger && stepTrigger)
         {
-            if (colliders[i].CompareTag("TrapTriggerFloor"))
-            {
-                Debug.Log("trampa activada");
-                ground.SetActive(false);
-            }
-
-            if (colliders[i].CompareTag("TrapTriggerOnRoof"))
-            {
-                Debug.Log("trampa activada");
-                move = true;
-            }
-            if (colliders[i].CompareTag("TrapTriggerOffRoof"))
-            {
-                Debug.Log("trampa desactivada");
-                move = false;
-            }
+            dead.DeathCanvasOn();
+            lookTrigger = false;
+            stepTrigger = false;
         }
+    }
 
-        ////Trigger para activar trampa que disparas
-        //bool doorTriggered = false;
-        //if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity))
-        //{
-        //    if (hit.collider.CompareTag("DoorTrigger"))
-        //    {
-        //        Debug.Log("Puerta");
-        //        doorTriggered = true;
-        //        //detectedCanvas.gameObject.SetActive(true); 
-        //    }
-        //}
+    public void setLook(bool look)
+    {
+        lookTrigger = look;
+        Death();
+    }
+    public void setStep(bool step)
+    {
+        stepTrigger = step;
+        Death();
+    }
 
+    public void DesactiveGround()
+    {
+        ground.SetActive(false);
     }
 }

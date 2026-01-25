@@ -3,31 +3,40 @@ using UnityEngine;
 public class Roof : MonoBehaviour
 {
 
-    //[SerializeField] float startSpeed = 1f;
+    [SerializeField] GameObject wall;
+    [SerializeField] public Transform roofMesh;
+    [SerializeField] public Transform roofCollider;
+    [SerializeField] Death dead;
 
+    [HideInInspector] public Vector3 roofStart;
+    
     Vector3 velocity = Vector3.down;
 
-    [SerializeField] TrapTrigger tggr;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject wall;
-    [SerializeField] GameObject ground;
+    public bool move = false;
 
+    private void Awake()
+    {
+        roofStart = roofCollider.position;
+
+    }
 
     void Update()
     {
+        if (dead.isDead) return;
 
-        Collider[] colider = Physics.OverlapBox(transform.position, transform.localScale);
-        if (tggr.move == true)
+        Collider[] colider = Physics.OverlapBox(roofCollider.position, roofCollider.localScale / 2);
+        if (move == true)
         {
             wall.SetActive(true);
-            transform.position += velocity * Time.deltaTime;
-        }
+            roofMesh.position += velocity * Time.deltaTime;
+            roofCollider.position += velocity * Time.deltaTime;
 
-        for (int i = 0; i < colider.Length; i++)
-        {
-            if (colider[i].CompareTag("Ground") || colider[i].CompareTag("Player"))
+            for (int i = 0; i < colider.Length; i++)
             {
-                tggr.move = false;
+                if (colider[i].CompareTag("Ground") || colider[i].CompareTag("Player"))
+                {
+                    move = false;
+                }
             }
         }
     }

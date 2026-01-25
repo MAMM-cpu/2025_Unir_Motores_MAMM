@@ -9,6 +9,8 @@ TagManager:
   - TrapTriggerOnRoof
   - TrapTriggerOffRoof
   - Ground
+  - TriggerDeath
+  - TriggerShoot
   layers:
   - Default
   - TransparentFX
