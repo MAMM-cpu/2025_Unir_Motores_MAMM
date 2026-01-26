@@ -40,4 +40,17 @@ public class Roof : MonoBehaviour
             }
         }
     }
+
+    public void ResetWall()
+    {
+        move = false;
+
+        roofCollider.position = roofStart;
+        roofMesh.position = roofStart;
+
+        if (wall.activeSelf)
+            wall.SetActive(false);
+    }
+
+
 }

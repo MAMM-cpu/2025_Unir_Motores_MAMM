@@ -9,8 +9,12 @@ public class Death : MonoBehaviour
     [SerializeField] GameObject roof;
     [SerializeField] GameObject deathCanvas;
     [SerializeField] float cinematicDuration = 3f;
+    [SerializeField] TMPro.TextMeshProUGUI endText;
+    [SerializeField] Color deathColor = Color.red;
+    [SerializeField] Color winColor = Color.green;
 
     [HideInInspector] public bool isDead = false;
+    bool isVictory = false;
 
     private float cinematicTimer = 0f;
 
@@ -21,8 +25,11 @@ public class Death : MonoBehaviour
 
         if (cinematicTimer <= 0f)
         {
-            ResetLevel();
-            isDead = false;
+            if (!isVictory)
+            {
+                ResetLevel();
+                isDead = false;
+            }
             deathCanvas.SetActive(false);
         }
     }
@@ -32,12 +39,30 @@ public class Death : MonoBehaviour
     {
         if (isDead) return;
 
+        isVictory = false;
         isDead = true;
         player.GetComponent<PlayerController>().OnDeath();
+
+        endText.text = "You Are Dead";
+        endText.color = deathColor;
+
         deathCanvas.SetActive(true);
         cinematicTimer = cinematicDuration;
     }
+    public void Victory()
+    {
+        if (isDead) return;
 
+        isVictory = true;
+        isDead = true;  
+        player.GetComponent<PlayerController>().OnDeath();
+
+        endText.text = "Victory";
+        endText.color = winColor;
+
+        deathCanvas.SetActive(true);
+        cinematicTimer = cinematicDuration;
+    }
 
     public void ResetLevel()
     {
@@ -58,8 +83,6 @@ public class Death : MonoBehaviour
         }
 
         Roof roofScript = roof.GetComponent<Roof>();
-        roofScript.move = false;
-        roofScript.roofCollider.position = roofScript.roofStart;
-        roofScript.roofMesh.position = roofScript.roofStart;
+        roofScript.ResetWall();
     }
 }

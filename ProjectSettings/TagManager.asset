@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - TriggerDeath
   - TriggerShoot
+  - TriggerVictory
   layers:
   - Default
   - TransparentFX

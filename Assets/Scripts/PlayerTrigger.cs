@@ -48,6 +48,10 @@ public class PlayerTrigger : MonoBehaviour
             {
                 dead.DeathCanvasOn();
             }
+            if (colliders[i].CompareTag("TriggerVictory"))
+            {
+                dead.Victory();
+            }
             if (colliders[i].CompareTag("TriggerShoot"))
             {
                 TrapTrigger trap = colliders[i].GetComponentInParent<TrapTrigger>();
